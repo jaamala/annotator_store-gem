@@ -78,6 +78,8 @@ And then from the `APP_ROOT` execute:
 
     $ bundle install
 
+    $ rails g annotator_store:install
+
 Configure your database credentials in your `config/database.yml` file and then run the
 migrations to create the tables to store the annotations.
 

@@ -7,6 +7,7 @@ module AnnotatorStore
 
     def search
       @annotations = AnnotatorStore::Annotation.where(search_params)
+                                               .where(user_id: current_user.try(:id))
       @total = @annotations.size
     end
 

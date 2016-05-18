@@ -8,6 +8,7 @@ module AnnotatorStore
     def create
       format_client_input_to_rails_convention_for_create
       @annotation = Annotation.new(annotation_params)
+      @annotation.user = current_user
       respond_to do |format|
         if @annotation.save
           format.json { render :show, status: :created, location: annotation_url(@annotation) }
@@ -52,7 +53,7 @@ module AnnotatorStore
 
     # Use callbacks to share common setup or constraints between actions.
     def set_annotation
-      @annotation = Annotation.find(params[:id])
+      @annotation = Annotation.where(id: params[:id], user_id: current_user.try(:id)).first
     end
 
     # Convert the data sent by AnnotatorJS to the format that Rails expects so

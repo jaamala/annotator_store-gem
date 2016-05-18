@@ -2,6 +2,18 @@ module AnnotatorStore
   class ApplicationController < ActionController::Base
     before_action :set_headers
 
+    alias_method :origin_current_user, AnnotatorStore.config.current_user_method.to_sym
+    alias_method :origin_authenticate_user!, AnnotatorStore.config.authenticate_user_method.to_sym
+    before_action :authenticate_user!
+
+    def current_user
+      origin_current_user
+    end
+
+    def authenticate_user!
+      origin_authenticate_user!
+    end
+
     private
 
     def set_headers
