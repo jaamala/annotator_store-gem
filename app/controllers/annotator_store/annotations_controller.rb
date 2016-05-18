@@ -1,13 +1,12 @@
-require_dependency 'annotator_store/application_controller'
-
 module AnnotatorStore
-  class AnnotationsController < ApplicationController
+  class AnnotationsController < AnnotatorStore::ApplicationController
     before_action :set_annotation, only: [:show, :update, :destroy]
 
     # POST /annotations
     def create
       format_client_input_to_rails_convention_for_create
       @annotation = Annotation.new(annotation_params)
+      @annotation.user_id = current_user.try(:id)
       respond_to do |format|
         if @annotation.save
           format.json { render :show, status: :created, location: annotation_url(@annotation) }
@@ -52,7 +51,7 @@ module AnnotatorStore
 
     # Use callbacks to share common setup or constraints between actions.
     def set_annotation
-      @annotation = Annotation.find(params[:id])
+      @annotation = Annotation.where(id: params[:id], user_id: current_user.try(:id)).first
     end
 
     # Convert the data sent by AnnotatorJS to the format that Rails expects so

@@ -1,5 +1,5 @@
 module AnnotatorStore
-  class PagesController < ApplicationController
+  class PagesController < AnnotatorStore::ApplicationController
     before_action :format_input, only: [:search]
 
     def index
@@ -7,6 +7,7 @@ module AnnotatorStore
 
     def search
       @annotations = AnnotatorStore::Annotation.where(search_params)
+                                               .where(user_id: current_user.try(:id))
       @total = @annotations.size
     end
 
