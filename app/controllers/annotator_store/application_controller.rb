@@ -1,5 +1,5 @@
 module AnnotatorStore
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ::ApplicationController
     before_action :set_headers
 
     alias_method :origin_current_user, AnnotatorStore.config.current_user_method.to_sym

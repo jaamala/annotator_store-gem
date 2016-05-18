@@ -1,5 +1,5 @@
 module AnnotatorStore
-  class PagesController < ApplicationController
+  class PagesController < AnnotatorStore::ApplicationController
     before_action :format_input, only: [:search]
 
     def index
