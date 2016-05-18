@@ -9,7 +9,7 @@ module AnnotatorStore
 
     # Validations
     validates :version, presence: true
-    validates :text, presence: true
+    # validates :text, presence: true
     validates :quote, presence: true
     validates :uri, presence: true
   end
