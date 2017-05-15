@@ -14,5 +14,6 @@ module AnnotatorStore
     validates :uri, presence: true
     validates :tags, presence: true
     validates :user_id, presence: true
+    validates :user, presence: true
   end
 end
