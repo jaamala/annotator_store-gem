@@ -9,6 +9,8 @@ json.uri annotation.uri
 # Content
 json.text annotation.text
 json.quote annotation.quote
+json.tags annotation.tags
+json.user annotation.user
 json.ranges do
   json.array! annotation.ranges do |range|
     json.start range.start
