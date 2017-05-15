@@ -64,6 +64,7 @@ module AnnotatorStore
       params[:annotation][:uri] = params[:uri] unless params[:uri].blank?
       params[:annotation][:tags] = params[:tags] unless params[:tags].blank?
       params[:annotation][:user_id] = params[:user_id] unless params[:user_id].blank?
+      params[:annotation][:user] = params[:user] unless params[:user].blank?
       params[:annotation][:ranges_attributes] = params[:ranges].map do |r|
         range = {}
         range[:start]        = r[:start]
@@ -84,6 +85,7 @@ module AnnotatorStore
       params[:annotation][:uri] = params[:uri] unless params[:uri].blank?
       params[:annotation][:tags] = params[:tags] unless params[:tags].blank?
       params[:annotation][:user_id] = params[:user_id] unless params[:user_id].blank?
+      params[:annotation][:user] = params[:user] unless params[:user].blank?
     end
 
     # Only allow a trusted parameter 'white list' through.
@@ -94,6 +96,7 @@ module AnnotatorStore
        :uri,
        :tags,
        :user_id,
+       :user,
        :version,
        ranges_attributes: [:start, :end, :start_offset, :end_offset]
       )
