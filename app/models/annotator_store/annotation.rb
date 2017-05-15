@@ -9,8 +9,10 @@ module AnnotatorStore
 
     # Validations
     validates :version, presence: true
-    # validates :text, presence: true
+    validates :text, presence: true
     validates :quote, presence: true
     validates :uri, presence: true
+    validates :tags, presence: true
+    validates :user_id, presence: true
   end
 end
