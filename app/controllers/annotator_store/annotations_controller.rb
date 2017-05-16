@@ -60,7 +60,6 @@ module AnnotatorStore
       params[:annotation] = {}
       params[:annotation][:version] = params[:annotator_schema_version] unless params[:annotator_schema_version].blank?
       params[:annotation][:text] = params[:text] unless params[:text].blank?
-      params[:annotation][:quote] = params[:quote] unless params[:quote].blank?
       params[:annotation][:uri] = params[:uri] unless params[:uri].blank?
       params[:annotation][:tags] = params[:tags] unless params[:tags].blank?
       params[:annotation][:user_id] = params[:user_id] unless params[:user_id].blank?
@@ -81,7 +80,6 @@ module AnnotatorStore
       params[:annotation] = {}
       params[:annotation][:version] = params[:annotator_schema_version] unless params[:annotator_schema_version].blank?
       params[:annotation][:text] = params[:text] unless params[:text].blank?
-      params[:annotation][:quote] = params[:quote] unless params[:quote].blank?
       params[:annotation][:uri] = params[:uri] unless params[:uri].blank?
       params[:annotation][:tags] = params[:tags] unless params[:tags].blank?
       params[:annotation][:user_id] = params[:user_id] unless params[:user_id].blank?
@@ -92,7 +90,6 @@ module AnnotatorStore
     def annotation_params
       params.require(:annotation).permit(
        :text,
-       :quote,
        :uri,
        :tags,
        :user_id,
